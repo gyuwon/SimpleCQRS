@@ -1,12 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using SimpleCQRS.Models.Data;
 
 namespace SimpleCQRS.Domain
 {
     public interface IUsersRepository
     {
-        Task<int> InsertAsync(User user);
+        Task InsertAsync(User user);
 
-        Task<User> FindAsync(int userId);
+        Task<User> FindAsync(Guid userId);
     }
 }

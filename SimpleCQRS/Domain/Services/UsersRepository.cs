@@ -18,7 +18,7 @@ namespace SimpleCQRS.Domain.Services
             _dbContextFactory = dbContextFactory;
         }
 
-        public async Task<User> FindAsync(int userId)
+        public async Task<User> FindAsync(Guid userId)
         {
             using (SimpleCQRSContext db = _dbContextFactory.Invoke())
             {
@@ -28,7 +28,7 @@ namespace SimpleCQRS.Domain.Services
             }
         }
 
-        public async Task<int> InsertAsync(User user)
+        public async Task InsertAsync(User user)
         {
             if (null == user)
                 throw new ArgumentNullException(nameof(user));
@@ -37,7 +37,6 @@ namespace SimpleCQRS.Domain.Services
             {
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
-                return user.Id;
             }
         }
     }

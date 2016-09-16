@@ -123,6 +123,8 @@
     <Compile Include="Models\Data\User.cs" />
     <Compile Include="Models\Presentation\UserPresentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadModel\LetExtensions.cs" />
+    <Compile Include="ReadModel\UsersReadModelFacade.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">

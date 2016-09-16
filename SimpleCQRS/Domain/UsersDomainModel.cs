@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using SimpleCQRS.Messages;
 using SimpleCQRS.Models.Data;
-using SimpleCQRS.Models.Presentation;
 
 namespace SimpleCQRS.Domain
 {
@@ -24,35 +23,17 @@ namespace SimpleCQRS.Domain
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<UserPresentation> CreateUserAsync(CreateUser command)
+        public async Task CreateUserAsync(CreateUser command)
         {
             if (null == command)
                 throw new ArgumentNullException(nameof(command));
 
-            int userId = await _repository.InsertAsync(new User
+            await _repository.InsertAsync(new User
             {
+                Id = command.UserId,
                 UserName = command.UserName,
                 PasswordHash = _passwordHasher.HashPassword(command.Password)
             });
-
-            User user = await _repository.FindAsync(userId);
-
-            return new UserPresentation
-            {
-                Id = user.Id,
-                UserName = user.UserName
-            };
-        }
-
-        public async Task<UserPresentation> FindUserByIdAsync(int userId)
-        {
-            User user = await _repository.FindAsync(userId);
-
-            return new UserPresentation
-            {
-                Id = user.Id,
-                UserName = user.UserName
-            };
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SimpleCQRS.Models.Data
@@ -6,7 +7,7 @@ namespace SimpleCQRS.Models.Data
     public class User
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(maximumLength: 32, MinimumLength = 3)]
