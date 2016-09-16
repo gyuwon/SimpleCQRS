@@ -103,6 +103,7 @@
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="packages.config" />
+    <Content Include="Architecture.pptx" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
