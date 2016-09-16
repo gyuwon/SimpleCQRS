@@ -43,5 +43,16 @@ namespace SimpleCQRS.Domain
                 UserName = user.UserName
             };
         }
+
+        public async Task<UserPresentation> FindUserByIdAsync(int userId)
+        {
+            User user = await _repository.FindAsync(userId);
+
+            return new UserPresentation
+            {
+                Id = user.Id,
+                UserName = user.UserName
+            };
+        }
     }
 }

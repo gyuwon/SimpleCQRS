@@ -27,5 +27,8 @@ namespace SimpleCQRS.Controllers
             UserPresentation user = await _domainLayer.CreateUserAsync(command);
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
+
+        public Task<UserPresentation> Get(int id) =>
+            _domainLayer.FindUserByIdAsync(id);
     }
 }
